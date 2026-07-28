@@ -1,0 +1,32 @@
+# Default+ theme for herdr
+#
+# This is the `[theme]` block only, extracted from a full herdr config.toml.
+# Merge it into your own ~/.config/herdr/config.toml — herdr doesn't support
+# importing a separate theme file, so this snippet is meant to be
+# copy/pasted into your existing config.
+#
+# `name` picks a built-in base theme; [theme.custom] then overrides every
+# token on top of it, so the base theme choice doesn't matter much here —
+# all tokens used by herdr's UI are overridden below.
+
+[theme]
+name = "terminal"
+auto_switch = false
+
+[theme.custom]
+accent = "#56D0B3"
+panel_bg = "#181818"
+surface0 = "#242424"
+surface1 = "#2E2E2E"
+surface_dim = "#141414"
+overlay0 = "#4D4D4D"
+overlay1 = "#8E8E8E"
+text = "#FFFFFF"
+subtext0 = "#B3B3B3"
+mauve = "#F2248C"
+green = "#2EA85B"
+yellow = "#FFE76D"
+red = "#FC4651"
+blue = "#35B0D8"
+teal = "#56D0B3"
+peach = "#FD9660"

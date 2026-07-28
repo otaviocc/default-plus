@@ -61,3 +61,14 @@ xcode_extended:
   type_system: "#D0A8FF"        # xcode.syntax.identifier.*.system (types)
   function_system: "#AB64FF"    # xcode.syntax.identifier.function.system
   declaration_type: "#66DAFF"   # xcode.syntax.declaration.type
+
+# herdr's [theme.custom] schema requires a few tokens that don't have a
+# direct equivalent in the core/base palette above (a surface tone scale,
+# a secondary text tone, and a "peach" accent used for its own UI). Kept
+# here so the herdr port stays reproducible from this file.
+herdr_extended:
+  surface0: "#242424"     # slightly raised panel surface
+  surface1: "#2E2E2E"     # further raised panel surface
+  surface_dim: "#141414"  # dimmed/recessed surface
+  subtext0: "#B3B3B3"     # secondary text, lighter than base.muted_text
+  peach: "#FD9660"        # herdr-specific accent (no equivalent elsewhere)
