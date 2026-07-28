@@ -3,7 +3,7 @@
   "defs": {
     "background": "#1E1E1E",
     "backgroundPanel": "#181818",
-    "backgroundElement": "#54554A",
+    "backgroundElement": "#181818",
     "foreground": "#FFFFFF",
     "muted": "#4D4D4D",
     "mutedText": "#8E8E8E",
