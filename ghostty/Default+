@@ -1,0 +1,28 @@
+# Default+
+bold-is-bright = false
+
+background = #1E1E1E
+foreground = #FFFFFF
+cursor-color = #FFFFFF
+selection-background = #54554A
+selection-foreground = #FFFFFF
+
+# ANSI 0–7
+palette = 0=#4D4D4D
+palette = 1=#FC4651
+palette = 2=#2EA85B
+palette = 3=#FFE76D
+palette = 4=#35B0D8
+palette = 5=#F2248C
+palette = 6=#56D0B3
+palette = 7=#FFFFFF
+
+# ANSI 8–15 (bright)
+palette = 8=#4D4D4D
+palette = 9=#FC4651
+palette = 10=#2EA85B
+palette = 11=#FFE76D
+palette = 12=#35B0D8
+palette = 13=#F2248C
+palette = 14=#56D0B3
+palette = 15=#FFFFFF

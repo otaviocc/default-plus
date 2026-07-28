@@ -1,0 +1,27 @@
+# Default+ theme for lazygit
+#
+# This is only the `theme:` block, extracted from a full lazygit config.yml.
+# Merge it under `gui:` in your own ~/.config/lazygit/config.yml — lazygit
+# doesn't support importing a separate theme file, so this snippet is meant
+# to be copy/pasted into your existing config.
+gui:
+  theme:
+    activeBorderColor:
+      - '#56D0B3'
+      - bold
+    inactiveBorderColor:
+      - '#54554A'
+    selectedLineBgColor:
+      - '#54554A'
+    cherryPickedCommitBgColor:
+      - '#54554A'
+    cherryPickedCommitFgColor:
+      - '#FFE76D'
+    unstagedChangesColor:
+      - '#FFE76D'
+    defaultFgColor:
+      - '#FFFFFF'
+    searchingActiveBorderColor:
+      - '#FFE76D'
+    optionsTextColor:
+      - '#56D0B3'

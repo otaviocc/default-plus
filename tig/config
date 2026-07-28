@@ -1,0 +1,73 @@
+# Default+ theme
+# tig 2.6.1 has no hex/true-color support, so hex values below are mapped
+# to their nearest 256-color palette equivalents:
+#   Background #1E1E1E -> color234 (#1c1c1c)
+#   Foreground #FFFFFF -> color231 (#ffffff)
+#   Selection  #54554A -> color240 (#585858)
+#   Muted      #4D4D4D -> color239 (#4e4e4e)
+#   Yellow     #FFE76D -> color221 (#ffd75f)
+#   Green      #2EA85B -> color35  (#00af5f)
+#   Red        #FC4651 -> color203 (#ff5f5f)
+#   Magenta    #F2248C -> color198 (#ff0087)
+#   Blue       #35B0D8 -> color74  (#5fafd7)
+#   Cyan       #56D0B3 -> color79  (#5fd7af)
+
+# Layout
+set vertical-split = false
+
+# Base UI
+color default        color231 color234
+color cursor          color234 color221
+color cursor-blur     color231 color240
+color status          color231 color234
+color title-focus     color234 color221
+color title-blur      color231 color240
+color search-result   color234 color221
+color header          color231 color234
+color line-number     color239 color234
+color delimiter       color239 color234
+color id              color221 color234
+color date            color231 color234
+color author          color79 color234
+color committer       color231 color234
+color mode            color239 color234
+color overflow        color239 color234
+color directory       color221 color234
+color file            color231 color234
+color file-size       color239 color234
+
+# Diff view
+color diff-add        color35 color234
+color diff-del         color203 color234
+color diff-header      color221 color234
+color diff-chunk        color79 color234
+
+# Log / commit graph
+color graph-commit    color221 color234
+color main-commit     color231 color234
+color main-annotated  color79 color234
+color main-head       color221 color234 bold
+color main-remote     color74 color234
+color main-tracked    color74 color234
+color main-tag        color198 color234
+color main-local-tag  color198 color234
+color main-ref        color79 color234
+color main-replace    color203 color234
+color main-stash      color198 color234
+color main-note       color35 color234
+color main-prefetch   color74 color234
+color main-other      color231 color234
+
+# Status view
+color stat-none      color239 color234
+color stat-staged     color35 color234
+color stat-unstaged    color221 color234
+color stat-untracked     color203 color234
+
+# Help view
+color help-group   color221 color234 bold
+color help-action   color231 color234
+
+# Tree view
+color tree.directory   color221 color234
+color tree.file        color231 color234

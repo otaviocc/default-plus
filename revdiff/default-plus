@@ -1,0 +1,26 @@
+# name: default-plus
+# description: Default+ colorscheme — cyan accent on near-black background
+# author: otaviocc
+
+chroma-style = monokai
+color-accent = #56D0B3
+color-border = #4D4D4D
+color-normal = #FFFFFF
+color-muted = #8E8E8E
+color-selected-fg = #1E1E1E
+color-selected-bg = #56D0B3
+color-annotation = #FFE76D
+color-cursor-fg = #2EA85B
+color-cursor-bg = #1E1E1E
+color-add-fg = #2EA85B
+color-add-bg = #1E2A20
+color-remove-fg = #FC4651
+color-remove-bg = #2A1E1F
+color-modify-fg = #FFE76D
+color-modify-bg = #2A2A1E
+color-tree-bg = #181818
+color-diff-bg = #1E1E1E
+color-status-fg = #1E1E1E
+color-status-bg = #56D0B3
+color-search-fg = #1E1E1E
+color-search-bg = #FFE76D
