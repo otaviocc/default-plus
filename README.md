@@ -9,19 +9,19 @@ there first and propagate the change to the relevant port(s).
 
 ## Palette
 
-| Role      | Hex       |
-|-----------|-----------|
-| Background        | `#1E1E1E` |
-| Foreground        | `#FFFFFF` |
-| Selection          | `#54554A` |
-| Muted              | `#4D4D4D` |
-| Muted text         | `#8E8E8E` |
-| Red                | `#FC4651` |
-| Green              | `#2EA85B` |
-| Yellow             | `#FFE76D` |
-| Blue               | `#35B0D8` |
-| Magenta            | `#F2248C` |
-| Cyan               | `#56D0B3` |
+| Role      | Hex       | Swatch |
+|-----------|-----------|--------|
+| Background        | `#1E1E1E` | <span style="color:#1E1E1E">███</span> |
+| Foreground        | `#FFFFFF` | <span style="color:#FFFFFF">███</span> |
+| Selection          | `#54554A` | <span style="color:#54554A">███</span> |
+| Muted              | `#4D4D4D` | <span style="color:#4D4D4D">███</span> |
+| Muted text         | `#8E8E8E` | <span style="color:#8E8E8E">███</span> |
+| Red                | `#FC4651` | <span style="color:#FC4651">███</span> |
+| Green              | `#2EA85B` | <span style="color:#2EA85B">███</span> |
+| Yellow             | `#FFE76D` | <span style="color:#FFE76D">███</span> |
+| Blue               | `#35B0D8` | <span style="color:#35B0D8">███</span> |
+| Magenta            | `#F2248C` | <span style="color:#F2248C">███</span> |
+| Cyan               | `#56D0B3` | <span style="color:#56D0B3">███</span> |
 
 The Xcode source theme also defines a handful of extended accents used only
 for finer-grained syntax highlighting there (attribute, macro/preprocessor,
