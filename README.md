@@ -11,17 +11,17 @@ there first and propagate the change to the relevant port(s).
 
 | Role      | Hex       | Swatch |
 |-----------|-----------|--------|
-| Background        | `#1E1E1E` | <span style="color:#1E1E1E">███</span> |
-| Foreground        | `#FFFFFF` | <span style="color:#FFFFFF">███</span> |
-| Selection          | `#54554A` | <span style="color:#54554A">███</span> |
-| Muted              | `#4D4D4D` | <span style="color:#4D4D4D">███</span> |
-| Muted text         | `#8E8E8E` | <span style="color:#8E8E8E">███</span> |
-| Red                | `#FC4651` | <span style="color:#FC4651">███</span> |
-| Green              | `#2EA85B` | <span style="color:#2EA85B">███</span> |
-| Yellow             | `#FFE76D` | <span style="color:#FFE76D">███</span> |
-| Blue               | `#35B0D8` | <span style="color:#35B0D8">███</span> |
-| Magenta            | `#F2248C` | <span style="color:#F2248C">███</span> |
-| Cyan               | `#56D0B3` | <span style="color:#56D0B3">███</span> |
+| Background        | `#1E1E1E` | ![#1E1E1E](https://placehold.co/15x15/1E1E1E/1E1E1E.png) |
+| Foreground        | `#FFFFFF` | ![#FFFFFF](https://placehold.co/15x15/FFFFFF/FFFFFF.png) |
+| Selection          | `#54554A` | ![#54554A](https://placehold.co/15x15/54554A/54554A.png) |
+| Muted              | `#4D4D4D` | ![#4D4D4D](https://placehold.co/15x15/4D4D4D/4D4D4D.png) |
+| Muted text         | `#8E8E8E` | ![#8E8E8E](https://placehold.co/15x15/8E8E8E/8E8E8E.png) |
+| Red                | `#FC4651` | ![#FC4651](https://placehold.co/15x15/FC4651/FC4651.png) |
+| Green              | `#2EA85B` | ![#2EA85B](https://placehold.co/15x15/2EA85B/2EA85B.png) |
+| Yellow             | `#FFE76D` | ![#FFE76D](https://placehold.co/15x15/FFE76D/FFE76D.png) |
+| Blue               | `#35B0D8` | ![#35B0D8](https://placehold.co/15x15/35B0D8/35B0D8.png) |
+| Magenta            | `#F2248C` | ![#F2248C](https://placehold.co/15x15/F2248C/F2248C.png) |
+| Cyan               | `#56D0B3` | ![#56D0B3](https://placehold.co/15x15/56D0B3/56D0B3.png) |
 
 The Xcode source theme also defines a handful of extended accents used only
 for finer-grained syntax highlighting there (attribute, macro/preprocessor,
