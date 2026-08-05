@@ -1,0 +1,118 @@
+# Default+ theme for hunk
+#
+# This is the `custom_theme` block only, extracted from a full hunk
+# config.toml. Merge it into your own ~/.config/hunk/config.toml — hunk
+# doesn't support importing a separate theme file, so this snippet is meant
+# to be copy/pasted into your existing config.
+#
+# `theme = "custom"` switches hunk to your custom theme; [custom_theme] then
+# defines every token on top of a built-in base theme.
+
+theme = "custom"
+
+[custom_theme]
+base  = "dark-plus"
+label = "Default+"
+
+# UI shell
+background  = "#1E1E1E"
+panel       = "#181818"
+panelAlt    = "#242424"
+border      = "#4D4D4D"
+accent      = "#35B0D8"
+accentMuted = "#2A6A84"
+text        = "#FFFFFF"
+muted       = "#8E8E8E"
+
+# Diff row backgrounds
+addedBg        = "#1E2A20"
+removedBg      = "#2A1E1F"
+movedAddedBg   = "#1A2530"
+movedRemovedBg = "#2A1E2A"
+contextBg      = "#1E1E1E"
+
+# Word-level (intra-line) highlights
+addedContentBg   = "#2A3D2D"
+removedContentBg = "#3D2224"
+contextContentBg = "#2A2A2A"
+
+# Gutter
+lineNumberBg     = "#181818"
+lineNumberFg     = "#4D4D4D"
+addedSignColor   = "#4D8A5F"
+removedSignColor = "#8A4048"
+
+# Selection
+selectedHunk = "#54554A"
+
+# File status badges
+badgeAdded   = "#4D8A5F"
+badgeRemoved = "#8A4048"
+badgeNeutral = "#8E8E8E"
+
+fileNew       = "#4D8A5F"
+fileDeleted   = "#8A4048"
+fileRenamed   = "#35B0D8"
+fileModified  = "#B8A84E"
+fileUntracked = "#8E8E8E"
+
+# Agent notes
+noteBorder          = "#35B0D8"
+noteBackground      = "#181818"
+noteTitleBackground = "#1A2A35"
+noteTitleText       = "#FFFFFF"
+
+[custom_theme.syntax_scopes]
+# Comments
+"comment"                        = "#8E8E8E"
+"punctuation.definition.comment" = "#8E8E8E"
+
+# Keywords / control flow  →  magenta
+"keyword"              = "#F2248C"
+"keyword.control"      = "#F2248C"
+"keyword.operator"     = "#FC4651"
+"storage"              = "#F2248C"
+"storage.type"         = "#F2248C"
+
+# Functions  →  blue
+"entity.name.function" = "#35B0D8"
+"support.function"     = "#35B0D8"
+"meta.function-call"   = "#35B0D8"
+
+# Types / classes  →  cyan
+"entity.name.type"     = "#56D0B3"
+"entity.name.class"    = "#56D0B3"
+"support.type"         = "#56D0B3"
+"support.class"        = "#56D0B3"
+
+# Strings  →  green
+"string"                        = "#2EA85B"
+"string.quoted"                 = "#2EA85B"
+"punctuation.definition.string" = "#2EA85B"
+
+# Numbers / constants  →  yellow
+"constant.numeric"  = "#FFE76D"
+"constant.language" = "#FFE76D"
+"constant.other"    = "#FFE76D"
+
+# Preprocessor / includes  →  cyan
+"meta.preprocessor"      = "#56D0B3"
+"keyword.control.import" = "#56D0B3"
+"keyword.other.using"    = "#56D0B3"
+
+# Variables  →  white
+"variable"       = "#FFFFFF"
+"variable.other" = "#FFFFFF"
+
+# Tags  →  blue
+"entity.name.tag"            = "#35B0D8"
+"punctuation.definition.tag" = "#8E8E8E"
+
+# Punctuation  →  muted
+"punctuation"           = "#8E8E8E"
+"punctuation.separator" = "#8E8E8E"
+
+# Diff markup  →  muted green/red (matches row bg tone)
+"markup.inserted" = "#4D8A5F"
+"markup.deleted"  = "#8A4048"
+"markup.changed"  = "#35B0D8"

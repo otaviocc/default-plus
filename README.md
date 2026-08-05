@@ -39,6 +39,7 @@ url, system types/functions). See `palette.yaml` for those.
 | Neovim | [`nvim/colors/default-plus.lua`](./nvim/colors/default-plus.lua) | Copy to `~/.config/nvim/colors/default-plus.lua`, then `vim.cmd.colorscheme("default-plus")`. |
 | zsh | [`zsh/default-plus.zsh`](./zsh/default-plus.zsh) | `source ~/Developer/Default+/zsh/default-plus.zsh` from your `~/.zshrc` (or copy the file and source your copy). Sets `LS_COLORS`, prompt, and completion colors. |
 | herdr | [`herdr/theme.toml`](./herdr/theme.toml) | Merge the `[theme]` / `[theme.custom]` blocks into `~/.config/herdr/config.toml`. |
+| hunk | [`hunk/theme.toml`](./hunk/theme.toml) | Merge the `theme = "custom"` line and `[custom_theme]` / `[custom_theme.syntax_scopes]` blocks into `~/.config/hunk/config.toml`. |
 
 ## Repo layout
 
@@ -52,7 +53,8 @@ Default+/
 ├── opencode/         opencode TUI theme
 ├── nvim/            Neovim colorscheme
 ├── zsh/             Sourceable zsh color/prompt snippet
-└── herdr/           herdr theme snippet
+├── herdr/           herdr theme snippet
+└── hunk/            hunk theme snippet
 ```
 
 ## License
