@@ -176,3 +176,88 @@ https://github.com/otaviocc/default-plus
   --graph-node-tag:          #FFE76D;
   --graph-node-attachment:   #FD9660;
 }
+
+/* ── Custom checkbox states ────────────────────────────────────────────── */
+
+/* Non-complete states: hide the default checkmark and render via icon */
+input[data-task=">"]:checked,
+input[data-task="/"]:checked,
+input[data-task="-"]:checked,
+input[data-task="?"]:checked,
+li[data-task=">"] > input:checked,
+li[data-task="/"] > input:checked,
+li[data-task="-"] > input:checked,
+li[data-task="?"] > input:checked,
+li[data-task=">"] > p > input:checked,
+li[data-task="/"] > p > input:checked,
+li[data-task="-"] > p > input:checked,
+li[data-task="?"] > p > input:checked {
+  --checkbox-marker-color: transparent;
+  background-color: currentColor;
+  background-image: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  border-radius: 0;
+  -webkit-mask-image: none;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+}
+
+/* [x] Complete */
+input[data-task="x"]:checked,
+li[data-task="x"] > input:checked,
+li[data-task="x"] > p > input:checked {
+  --checkbox-color: var(--color-green);
+  --checkbox-color-hover: var(--color-green);
+}
+
+/* [>] Postponed */
+input[data-task=">"]:checked,
+li[data-task=">"] > input:checked,
+li[data-task=">"] > p > input:checked {
+  color: var(--color-cyan);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+/* [-] Cancelled */
+input[data-task="-"]:checked,
+li[data-task="-"] > input:checked,
+li[data-task="-"] > p > input:checked {
+  color: var(--text-muted);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='currentColor'%3E%3Cpath fill-rule='evenodd' d='M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z' clip-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+/* [/] Partial */
+input[data-task="/"]:checked,
+li[data-task="/"] > input:checked,
+li[data-task="/"] > p > input:checked {
+  border: 1px solid var(--checkbox-border-color);
+  border-radius: var(--checkbox-radius);
+  background-color: transparent;
+  background-image: linear-gradient(90deg, var(--color-cyan) 0 50%, transparent 50% 100%);
+  background-size: 100% 100%;
+  -webkit-mask-image: none;
+}
+
+/* [?] Question */
+input[data-task="?"]:checked,
+li[data-task="?"] > input:checked,
+li[data-task="?"] > p > input:checked {
+  border: 1px solid var(--color-yellow);
+  border-radius: var(--checkbox-radius);
+  background-color: var(--color-yellow);
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 16 16"%3E%3Cpath d="M4.475 5.458c-.284 0-.514-.237-.47-.517C4.28 3.24 5.576 2 7.825 2c2.25 0 3.767 1.36 3.767 3.215 0 1.344-.665 2.288-1.79 2.973-1.1.659-1.414 1.118-1.414 2.01v.03a.5.5 0 0 1-.5.5h-.77a.5.5 0 0 1-.5-.495l-.003-.2c-.043-1.221.477-2.001 1.645-2.712 1.03-.632 1.397-1.135 1.397-2.028 0-.979-.758-1.698-1.926-1.698-1.009 0-1.71.529-1.938 1.402-.066.254-.278.461-.54.461h-.777ZM7.496 14c.622 0 1.095-.474 1.095-1.09 0-.618-.473-1.092-1.095-1.092-.606 0-1.087.474-1.087 1.091S6.89 14 7.496 14Z"/%3E%3C/svg%3E');
+  background-size: 75%;
+  -webkit-mask-image: none;
+}
+
+/* [-] Cancelled: faint + strikethrough task text */
+body:not(.tasks) .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="-"],
+body:not(.tasks) .markdown-preview-view li[data-task="-"].task-list-item.is-checked {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
