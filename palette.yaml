@@ -72,3 +72,22 @@ herdr_extended:
   surface_dim: "#141414"  # dimmed/recessed surface
   subtext0: "#B3B3B3"     # secondary text, lighter than base.muted_text
   peach: "#FD9660"        # herdr-specific accent (no equivalent elsewhere)
+
+# Claude Code's custom theme is based on its built-in dark-ansi preset,
+# which reads the terminal's own 16 ANSI colors for almost everything
+# (diffs, status, text) — and since the Ghostty/zsh ports already put
+# Default+'s accents on those ANSI slots, most tokens need no override at
+# all. Only a handful of "signature" tokens (the primary accent, mode
+# borders, subagent colors, the ultrathink rainbow) are pinned to exact
+# Default+ hexes below, plus their "shimmer" tones — the lighter half of
+# the spinner/rainbow gradient animation for each accent. Kept here so the
+# claude-code port stays reproducible from this file.
+claude_code_extended:
+  shimmer_blue: "#66DAFF"        # = xcode_extended.declaration_type
+  shimmer_magenta: "#FF6BB0"
+  shimmer_yellow: "#FFF3AD"
+  shimmer_orange: "#FFC29B"
+  shimmer_red: "#FF8A91"
+  shimmer_green: "#5FD48A"
+  shimmer_indigo: "#8FC6FF"
+  shimmer_violet: "#C99BFF"

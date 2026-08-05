@@ -40,6 +40,8 @@ url, system types/functions). See `palette.yaml` for those.
 | zsh | [`zsh/default-plus.zsh`](./zsh/default-plus.zsh) | `source ~/Developer/Default+/zsh/default-plus.zsh` from your `~/.zshrc` (or copy the file and source your copy). Sets `LS_COLORS`, prompt, and completion colors. |
 | herdr | [`herdr/theme.toml`](./herdr/theme.toml) | Merge the `[theme]` / `[theme.custom]` blocks into `~/.config/herdr/config.toml`. |
 | hunk | [`hunk/theme.toml`](./hunk/theme.toml) | Merge the `theme = "custom"` line and `[custom_theme]` / `[custom_theme.syntax_scopes]` blocks into `~/.config/hunk/config.toml`. |
+| Obsidian | [`obsidian/themes/Default+/`](./obsidian/themes/Default+) | Copy the `Default+` folder to `<vault>/.obsidian/themes/`, then select **Default+** in Settings → Appearance → Themes. |
+| Claude Code | [`claude-code/default-plus.json`](./claude-code/default-plus.json) | Copy to `~/.claude/themes/default-plus.json`, then pick **Default+** in `/theme` (or set `"theme": "custom:default-plus"` in `~/.claude/settings.json`). Requires Claude Code v2.1.118+. Builds on the `dark-ansi` base, so pairs best with a terminal already running the [Ghostty](#apps) Default+ theme. |
 
 ## Repo layout
 
@@ -54,7 +56,9 @@ Default+/
 ├── nvim/            Neovim colorscheme
 ├── zsh/             Sourceable zsh color/prompt snippet
 ├── herdr/           herdr theme snippet
-└── hunk/            hunk theme snippet
+├── hunk/            hunk theme snippet
+├── obsidian/        Obsidian theme (manifest.json + theme.css)
+└── claude-code/     Claude Code custom theme
 ```
 
 ## License
