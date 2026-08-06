@@ -1,0 +1,32 @@
+# Default+ theme for Slack
+#
+# Slack supports two theme formats. Paste either string into any Slack
+# message box and press Enter — Slack will show an "Apply Slack theme"
+# button — or go to Preferences → Appearance → Custom theme → Import.
+#
+# ── Modern format (post-December 2023 redesign) ──────────────────────
+# Four values: System Navigation, Selected Items, Presence, Notifications
+# Note: Slack snaps these to its nearest built-in palette entry rather
+# than applying your hex values verbatim, so results may vary slightly.
+#
+#   System Navigation  → base.background      #1E1E1E
+#   Selected Items     → base.selection_bg     #54554A
+#   Presence           → accent.green          #2EA85B
+#   Notifications      → accent.red            #FC4651
+
+#1E1E1E,#54554A,#2EA85B,#FC4651
+
+# ── Legacy format (8-value, exact hex control) ────────────────────────
+# Paste via Preferences → Appearance → Custom theme → "Paste legacy theme".
+# Gives pixel-perfect control — Slack applies these values verbatim.
+#
+#   1 Column BG         → base.background      #1E1E1E  sidebar background
+#   2 Menu BG Hover     → base.subtle          #2A2A2A  workspace header hover
+#   3 Active Item       → base.selection_bg    #54554A  selected channel row
+#   4 Active Item Text  → base.foreground      #FFFFFF  text on selected row
+#   5 Hover Item        → base.subtle          #2A2A2A  non-active row hover
+#   6 Text Color        → base.foreground      #FFFFFF  all sidebar text/icons
+#   7 Active Presence   → accent.green         #2EA85B  online presence dot
+#   8 Mention Badge     → accent.red           #FC4651  unread mention badge
+
+#1E1E1E,#2A2A2A,#54554A,#FFFFFF,#2A2A2A,#FFFFFF,#2EA85B,#FC4651
