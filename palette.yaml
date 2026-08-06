@@ -61,6 +61,7 @@ xcode_extended:
   type_system: "#D0A8FF"        # xcode.syntax.identifier.*.system (types)
   function_system: "#AB64FF"    # xcode.syntax.identifier.function.system
   declaration_type: "#66DAFF"   # xcode.syntax.declaration.type
+  markup_code: "#AA0D91"        # xcode.syntax.markup.code (doc-comment inline code)
 
 # herdr's [theme.custom] schema requires a few tokens that don't have a
 # direct equivalent in the core/base palette above (a surface tone scale,
@@ -91,3 +92,29 @@ claude_code_extended:
   shimmer_green: "#5FD48A"
   shimmer_indigo: "#8FC6FF"
   shimmer_violet: "#C99BFF"
+
+# hunk's diff view requires several colors that go beyond the core palette:
+# muted/desaturated accent variants for gutter signs and file-status badges,
+# hue-tinted dark backgrounds for diff rows (shared with opencode's diffAddedBg /
+# diffRemovedBg), intra-line word-level highlight backgrounds, and a handful of
+# structural tints for moved hunks and note title bars. Kept here so the hunk
+# (and opencode diff) ports stay reproducible from this file.
+hunk_extended:
+  # Diff row backgrounds (also used by opencode as diffAddedBg / diffRemovedBg)
+  diff_added_bg: "#1E2A20"      # very dark green tint — added line row
+  diff_removed_bg: "#2A1E1F"    # very dark red tint — removed line row
+  diff_moved_added_bg: "#1A2530"    # very dark blue-green tint — moved+added row
+  diff_moved_removed_bg: "#2A1E2A"  # very dark purple-red tint — moved+removed row
+
+  # Word-level (intra-line) highlight backgrounds
+  diff_added_content_bg: "#2A3D2D"    # darker green for word-level add highlights
+  diff_removed_content_bg: "#3D2224"  # darker red for word-level remove highlights
+
+  # Muted accent tones (desaturated mid-tone between accent and background)
+  accent_muted: "#2A6A84"     # dimmed blue — inactive/secondary accent states
+  muted_green: "#4D8A5F"      # muted green — gutter signs, added file badge
+  muted_red: "#8A4048"        # muted red — gutter signs, deleted file badge
+  muted_yellow: "#B8A84E"     # muted yellow — modified file badge
+
+  # Structural tints
+  note_title_bg: "#1A2A35"    # very dark blue tint — note/annotation title bar
