@@ -42,6 +42,7 @@ url, system types/functions). See `palette.yaml` for those.
 | hunk | [`hunk/theme.toml`](./hunk/theme.toml) | Merge the `theme = "custom"` line and `[custom_theme]` / `[custom_theme.syntax_scopes]` blocks into `~/.config/hunk/config.toml`. |
 | Obsidian | [`obsidian/themes/Default+/`](./obsidian/themes/Default+) | Copy the `Default+` folder to `<vault>/.obsidian/themes/`, then select **Default+** in Settings → Appearance → Themes. |
 | Claude Code | [`claude-code/default-plus.json`](./claude-code/default-plus.json) | Copy to `~/.claude/themes/default-plus.json`, then pick **Default+** in `/theme` (or set `"theme": "custom:default-plus"` in `~/.claude/settings.json`). Requires Claude Code v2.1.118+. Builds on the `dark-ansi` base, so pairs best with a terminal already running the [Ghostty](#apps) Default+ theme. |
+| VS Code | [`vscode/`](./vscode) | Symlink or copy the `vscode/` folder into `~/.vscode/extensions/default-plus`, then reload VS Code and select **Default+** in the Color Theme picker (`⌘K ⌘T`). |
 
 ## Repo layout
 
@@ -58,7 +59,8 @@ Default+/
 ├── herdr/           herdr theme snippet
 ├── hunk/            hunk theme snippet
 ├── obsidian/        Obsidian theme (manifest.json + theme.css)
-└── claude-code/     Claude Code custom theme
+├── claude-code/     Claude Code custom theme
+└── vscode/          Visual Studio Code color theme extension
 ```
 
 ## License

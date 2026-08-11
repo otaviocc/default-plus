@@ -1,0 +1,27 @@
+{
+  "name": "default-plus",
+  "displayName": "Default+",
+  "description": "A dark color theme originally created as an Xcode Font & Color Theme, ported to Visual Studio Code.",
+  "version": "1.0.0",
+  "publisher": "otaviocc",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/otaviocc/default-plus"
+  },
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Default+",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Default+-color-theme.json"
+      }
+    ]
+  }
+}
