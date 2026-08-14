@@ -1,0 +1,64 @@
+# Default+ theme for vigia
+#
+# Place at ~/.config/vigia/theme, or point to it with:
+#   VIGIA_THEME=~/path/to/this/file
+#
+# Starts from the `dark` built-in and overrides every key.
+
+base = dark
+
+# Chrome — blue primary accent
+chrome     = #35B0D8 bold
+chrome_dim = #8E8E8E
+
+# File list — three recency rungs
+path      = #FFFFFF bold
+path_live = #FFFFFF
+path_cold = #8E8E8E
+pulse     = #35B0D8
+spark     = #35B0D8
+spark_track = #2A2A2A
+
+# Scrollbar
+bar       = #8E8E8E
+bar_track = #2A2A2A
+
+# Heat strip
+heat_track        = #2A2A2A
+heat_added        = #2EA85B
+heat_added_warm   = #4D8A5F
+heat_added_hot    = #5FD48A
+heat_removed      = #8A4048
+heat_removed_warm = #FC4651
+heat_removed_hot  = #FF8A91
+heat_mixed        = #B8A84E
+heat_mixed_warm   = #FFE76D
+heat_mixed_hot    = #FFF3AD
+
+# Labels
+kind   = #FFE76D
+hunk   = #35B0D8
+gutter = #4D4D4D
+
+# Diff sigils
+added   = #2EA85B
+removed = #FC4651
+context = #FFFFFF
+
+# Row washes (truecolor only)
+added_row   = on #1E2A20
+removed_row = on #2A1E1F
+
+# Status
+note  = #56D0B3
+alert = #FC4651 bold
+
+# Syntax
+keyword   = #F2248C
+type_name = #56D0B3
+function  = #35B0D8
+variable  = #FFFFFF
+constant  = #FFE76D
+string    = #2EA85B
+number    = #FFE76D
+comment   = #8E8E8E
