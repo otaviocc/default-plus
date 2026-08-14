@@ -44,6 +44,8 @@ url, system types/functions). See `palette.yaml` for those.
 | hunk | Merge the `[custom_theme]` blocks from [`hunk/theme.toml`](./hunk/theme.toml) into `~/.config/hunk/config.toml`. |
 | Claude Code | Copy [`claude-code/default-plus.json`](./claude-code/default-plus.json) to `~/.claude/themes/default-plus.json`, then pick **Default+** in `/theme`. Requires Claude Code v2.1.118+. |
 | Slack | See [`slack/theme.txt`](./slack/theme.txt) for the paste values. |
+| iTerm2 | Double-click [`iterm/Default+.itermcolors`](./iterm/Default+.itermcolors) (or drag it into Preferences → Profiles → Colors → Color Presets → Import), then select **Default+**. |
+| Apple Terminal | Double-click [`terminal/Default+.terminal`](./terminal/Default+.terminal) to add it, then select **Default+** in Terminal → Settings → Profiles. |
 
 ## Repo layout
 
@@ -59,7 +61,9 @@ Default+/
 ├── herdr/           herdr theme snippet
 ├── hunk/            hunk theme snippet
 ├── claude-code/     Claude Code custom theme
-└── slack/           Slack sidebar theme
+├── slack/           Slack sidebar theme
+├── iterm/           iTerm2 color preset
+└── terminal/        Apple Terminal profile
 ```
 
 Ports with their own repositories:
