@@ -21,8 +21,8 @@ auto_switch = false
 
 [theme.custom]
 accent        = "#35B0D8"
-panel_bg      = "#111111"
-sidebar_bg    = "#0D0D0D"
+panel_bg      = "#171717"
+sidebar_bg    = "#171717"
 active_row_bg = "#242424"
 selection_bg  = "#515B70"
 surface0      = "#242424"

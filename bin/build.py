@@ -544,8 +544,8 @@ auto_switch = false
 
 [theme.custom]
 accent        = "{s["declaration"]}"
-panel_bg      = "{b["panel_background"]}"
-sidebar_bg    = "{e["surface_dim"]}"
+panel_bg      = "{b["background"]}"
+sidebar_bg    = "{b["background"]}"
 active_row_bg = "{b["subtle"]}"
 selection_bg  = "{b["selection_background"]}"
 surface0      = "{e["surface0"]}"
