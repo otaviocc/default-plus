@@ -3,11 +3,13 @@
 # Place at ~/.config/vigia/theme, or point to it with:
 #   VIGIA_THEME=~/path/to/this/file
 #
-# Starts from the `dark` built-in and overrides every key.
+# Colours come from palette.yaml; `bin/build.py --validate` checks them.
+# Syntax roles follow Xcode: comments are GREEN and strings are RED. Diff
+# sigils use the status colours instead, so they stay distinct from syntax.
 
 base = dark
 
-# Chrome — blue primary accent
+# Chrome — cyan primary accent
 chrome     = #35B0D8 bold
 chrome_dim = #8E8E8E
 
@@ -17,48 +19,48 @@ path_live = #FFFFFF
 path_cold = #8E8E8E
 pulse     = #35B0D8
 spark     = #35B0D8
-spark_track = #2A2A2A
+spark_track = #242424
 
 # Scrollbar
 bar       = #8E8E8E
-bar_track = #2A2A2A
+bar_track = #242424
 
-# Heat strip
-heat_track        = #2A2A2A
-heat_added        = #2EA85B
-heat_added_warm   = #4D8A5F
-heat_added_hot    = #5FD48A
-heat_removed      = #8A4048
+# Heat strip — each ramp walks muted -> base -> bright
+heat_track        = #242424
+heat_added        = #226039
+heat_added_warm   = #2EA85B
+heat_added_hot    = #41B645
+heat_removed      = #8A2E34
 heat_removed_warm = #FC4651
-heat_removed_hot  = #FF8A91
-heat_mixed        = #B8A84E
-heat_mixed_warm   = #FFE76D
-heat_mixed_hot    = #FFF3AD
+heat_removed_hot  = #F74A4A
+heat_mixed        = #7C5A3E
+heat_mixed_warm   = #E09D65
+heat_mixed_hot    = #FFE76D
 
 # Labels
 kind   = #FFE76D
 hunk   = #35B0D8
-gutter = #4D4D4D
+gutter = #4C4C4C
 
 # Diff sigils
-added   = #2EA85B
-removed = #FC4651
+added   = #41B645
+removed = #F74A4A
 context = #FFFFFF
 
 # Row washes (truecolor only)
-added_row   = on #1E2A20
-removed_row = on #2A1E1F
+added_row   = on #1C3425
+removed_row = on #452023
 
 # Status
 note  = #56D0B3
-alert = #FC4651 bold
+alert = #F74A4A bold
 
-# Syntax
+# Syntax — Xcode's role map
 keyword   = #F2248C
 type_name = #56D0B3
-function  = #35B0D8
-variable  = #FFFFFF
+function  = #56D0B3
+variable  = #56D0B3
 constant  = #FFE76D
-string    = #2EA85B
+string    = #FC4651
 number    = #FFE76D
-comment   = #8E8E8E
+comment   = #2EA85B

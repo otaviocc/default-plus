@@ -1,12 +1,11 @@
 # Default+ theme for hunk
 #
-# This is the `custom_theme` block only, extracted from a full hunk
-# config.toml. Merge it into your own ~/.config/hunk/config.toml — hunk
-# doesn't support importing a separate theme file, so this snippet is meant
-# to be copy/pasted into your existing config.
+# This is the `custom_theme` block only. Merge it into your own
+# ~/.config/hunk/config.toml — hunk cannot import a separate theme file.
 #
-# `theme = "custom"` switches hunk to your custom theme; [custom_theme] then
-# defines every token on top of a built-in base theme.
+# Colours come from palette.yaml; `bin/build.py --validate` checks them.
+# Syntax scopes follow Xcode's own role assignment, which is NOT the usual
+# terminal convention: in Default+ comments are GREEN and strings are RED.
 
 theme = "custom"
 
@@ -15,104 +14,107 @@ base  = "dark-plus"
 label = "Default+"
 
 # UI shell
-background  = "#1E1E1E"
-panel       = "#181818"
+background  = "#171717"
+panel       = "#111111"
 panelAlt    = "#242424"
-border      = "#4D4D4D"
+border      = "#4C4C4C"
 accent      = "#35B0D8"
-accentMuted = "#2A6A84"
+accentMuted = "#266478"
 text        = "#FFFFFF"
 muted       = "#8E8E8E"
 
 # Diff row backgrounds
-addedBg        = "#1E2A20"
-removedBg      = "#2A1E1F"
-movedAddedBg   = "#1A2530"
-movedRemovedBg = "#2A1E2A"
-contextBg      = "#1E1E1E"
+addedBg        = "#1C3425"
+removedBg      = "#452023"
+movedAddedBg   = "#1D363E"
+movedRemovedBg = "#352645"
+contextBg      = "#171717"
 
 # Word-level (intra-line) highlights
-addedContentBg   = "#2A3D2D"
-removedContentBg = "#3D2224"
-contextContentBg = "#2A2A2A"
+addedContentBg   = "#1F4A2F"
+removedContentBg = "#67272B"
+contextContentBg = "#2F2F2F"
 
 # Gutter
-lineNumberBg     = "#181818"
-lineNumberFg     = "#4D4D4D"
-addedSignColor   = "#4D8A5F"
-removedSignColor = "#8A4048"
+lineNumberBg     = "#111111"
+lineNumberFg     = "#4C4C4C"
+addedSignColor   = "#226039"
+removedSignColor = "#8A2E34"
 
 # Selection
-selectedHunk = "#54554A"
+selectedHunk = "#515B70"
 
 # File status badges
-badgeAdded   = "#4D8A5F"
-badgeRemoved = "#8A4048"
+badgeAdded   = "#226039"
+badgeRemoved = "#8A2E34"
 badgeNeutral = "#8E8E8E"
 
-fileNew       = "#4D8A5F"
-fileDeleted   = "#8A4048"
+fileNew       = "#226039"
+fileDeleted   = "#8A2E34"
 fileRenamed   = "#35B0D8"
-fileModified  = "#B8A84E"
+fileModified  = "#7C5A3E"
 fileUntracked = "#8E8E8E"
 
 # Agent notes
 noteBorder          = "#35B0D8"
-noteBackground      = "#181818"
-noteTitleBackground = "#1A2A35"
+noteBackground      = "#111111"
+noteTitleBackground = "#1D363E"
 noteTitleText       = "#FFFFFF"
 
 [custom_theme.syntax_scopes]
-# Comments
-"comment"                        = "#8E8E8E"
-"punctuation.definition.comment" = "#8E8E8E"
+# Comments  ->  GREEN (xcode.syntax.comment) — the Default+ signature
+"comment"                        = "#2EA85B"
+"punctuation.definition.comment" = "#2EA85B"
 
-# Keywords / control flow  →  magenta
-"keyword"              = "#F2248C"
-"keyword.control"      = "#F2248C"
-"keyword.operator"     = "#FC4651"
-"storage"              = "#F2248C"
-"storage.type"         = "#F2248C"
+# Strings  ->  RED (xcode.syntax.string)
+"string"                        = "#FC4651"
+"string.quoted"                 = "#FC4651"
+"punctuation.definition.string" = "#FC4651"
 
-# Functions  →  blue
-"entity.name.function" = "#35B0D8"
-"support.function"     = "#35B0D8"
-"meta.function-call"   = "#35B0D8"
+# Keywords / storage  ->  magenta (xcode.syntax.keyword)
+"keyword"          = "#F2248C"
+"keyword.control"  = "#F2248C"
+"storage"          = "#F2248C"
+"storage.type"     = "#F2248C"
 
-# Types / classes  →  cyan
+# Operators  ->  plain (Xcode leaves operators in the foreground colour)
+"keyword.operator" = "#FFFFFF"
+
+# Project identifiers: types, classes and functions you define  ->  teal
+"entity.name.function" = "#56D0B3"
 "entity.name.type"     = "#56D0B3"
 "entity.name.class"    = "#56D0B3"
-"support.type"         = "#56D0B3"
-"support.class"        = "#56D0B3"
+"meta.function-call"   = "#56D0B3"
+"variable"             = "#56D0B3"
+"variable.other"       = "#56D0B3"
 
-# Strings  →  green
-"string"                        = "#2EA85B"
-"string.quoted"                 = "#2EA85B"
-"punctuation.definition.string" = "#2EA85B"
+# System identifiers: SDK members and types  ->  purple
+"support.function" = "#AB64FF"
+"support.type"     = "#D0A8FF"
+"support.class"    = "#D0A8FF"
 
-# Numbers / constants  →  yellow
+# Numbers / constants  ->  yellow (xcode.syntax.number)
 "constant.numeric"  = "#FFE76D"
 "constant.language" = "#FFE76D"
 "constant.other"    = "#FFE76D"
 
-# Preprocessor / includes  →  cyan
-"meta.preprocessor"      = "#56D0B3"
-"keyword.control.import" = "#56D0B3"
-"keyword.other.using"    = "#56D0B3"
+# Preprocessor / macros  ->  orange (xcode.syntax.preprocessor)
+"meta.preprocessor"      = "#FD8F3F"
+"keyword.control.import" = "#FD8F3F"
+"keyword.other.using"    = "#FD8F3F"
 
-# Variables  →  white
-"variable"       = "#FFFFFF"
-"variable.other" = "#FFFFFF"
+# Attributes  ->  tan (xcode.syntax.attribute)
+"entity.other.attribute-name" = "#E09D65"
 
-# Tags  →  blue
+# Tags  ->  cyan (xcode.syntax.declaration.other)
 "entity.name.tag"            = "#35B0D8"
 "punctuation.definition.tag" = "#8E8E8E"
 
-# Punctuation  →  muted
+# Punctuation  ->  muted
 "punctuation"           = "#8E8E8E"
 "punctuation.separator" = "#8E8E8E"
 
-# Diff markup  →  muted green/red (matches row bg tone)
-"markup.inserted" = "#4D8A5F"
-"markup.deleted"  = "#8A4048"
+# Diff markup  ->  muted green/red, matching the row background tone
+"markup.inserted" = "#226039"
+"markup.deleted"  = "#8A2E34"
 "markup.changed"  = "#35B0D8"

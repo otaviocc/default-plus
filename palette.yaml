@@ -2,119 +2,155 @@
 #
 # Canonical color palette for the Default+ colorscheme.
 # Originated as an Xcode Font & Color Theme, ported to every app below.
-# All per-app files in this repo are derived from these values — if you
-# change a color, change it here first and propagate it to the ports.
+#
+# SOURCE OF TRUTH: xcode/Default+.xccolortheme (Xcode 26, classic plist format).
+# Every value in `base`, `syntax`, `status` and `ansi` is lifted verbatim from
+# that file; everything under `derived` is computed from them by a stated rule.
+# `bin/build.py --check` re-reads the plist and recomputes the blends, and fails
+# if either has drifted. Change a colour in Xcode first, re-run the script, then
+# propagate to the ports.
+#
+# Xcode 27's `.xcworkspacecolortheme` recipe format is NOT a source here. Xcode 26
+# renders the classic plist, and that is what this palette targets.
 
 meta:
   name: Default+
+  slug: default-plus
   appearance: dark
   origin: Xcode Font & Color Theme (Default+.xccolortheme)
+  xcode: "26"
 
+# ── Base / UI chrome ────────────────────────────────────────────────────────
+# From the DVT* keys, except `panel_background` and `subtle`, which Xcode has no
+# equivalent for — they let TUI ports separate a panel from the editor surface.
+# Both are greys derived from `background`: panels recessed, hover raised.
 base:
-  background: "#1E1E1E"
-  foreground: "#FFFFFF"
-  cursor: "#FFFFFF"
-  selection_background: "#54554A"
+  background: "#171717"           # DVTSourceTextBackground
+  foreground: "#FFFFFF"           # xcode.syntax.plain
+  cursor: "#FFFFFF"               # DVTSourceTextInsertionPointColor
+  selection_background: "#515B70" # DVTSourceTextSelectionColor
   selection_foreground: "#FFFFFF"
-  muted: "#4D4D4D"        # ANSI black / comments-adjacent UI chrome
-  muted_text: "#8E8E8E"   # secondary text, used in TUI ports (opencode, nvim)
-  subtle: "#2A2A2A"       # subtle panel/background differentiation
-  panel_background: "#181818"
+  current_line: "#343540"         # DVTSourceTextCurrentLineHighlightColor (a=0.5)
+  invisibles: "#4C4C4C"           # DVTSourceTextInvisiblesColor
+  muted: "#4C4C4C"                # = invisibles; borders, inactive chrome
+  muted_text: "#8E8E8E"           # DVTScrollbarMarkerDiffColor; secondary text
+  panel_background: "#111111"     # derived: background recessed one step
+  subtle: "#242424"               # derived: background raised one step
 
-# Core accents. These are the 6 "hero" colors used consistently across
-# every port (Xcode syntax, ANSI 1-6/9-14, TUI accents, etc).
-accent:
-  red: "#FC4651"      # Xcode: string / regex
-  green: "#2EA85B"    # Xcode: comment
-  yellow: "#FFE76D"   # Xcode: number / character
-  blue: "#35B0D8"      # Xcode: declaration.other
-  magenta: "#F2248C"   # Xcode: keyword
-  cyan: "#56D0B3"      # Xcode: type / class / function
+# ── Syntax roles ────────────────────────────────────────────────────────────
+# The authoritative role map. Every port maps its own scope names onto THESE
+# names — never onto `ansi`, and never onto a conventional guess.
+#
+# Note the two roles most often gotten wrong: in Default+ `comment` is GREEN and
+# `string` is RED. That inversion versus the usual terminal convention is the
+# theme's signature; a port that "fixes" it stops looking like Default+.
+syntax:
+  plain: "#FFFFFF"               # xcode.syntax.plain, regex.other
+  comment: "#2EA85B"             # xcode.syntax.comment, comment.doc, mark  ← GREEN
+  string: "#FC4651"              # xcode.syntax.string, regex               ← RED
+  keyword: "#F2248C"             # xcode.syntax.keyword
+  number: "#FFE76D"              # xcode.syntax.number, character, regex.number
+  macro: "#FD8F3F"               # xcode.syntax.identifier.macro, preprocessor
+  attribute: "#E09D65"           # xcode.syntax.attribute
+  url: "#4FA5FF"                 # xcode.syntax.url
+  declaration: "#35B0D8"         # xcode.syntax.declaration.other
+  declaration_type: "#66DAFF"    # xcode.syntax.declaration.type
+  project_identifier: "#56D0B3"  # identifier.{class,type,function,variable,constant}
+  system_member: "#AB64FF"       # identifier.{function,variable,constant}.system
+  system_type: "#D0A8FF"         # identifier.{class,type}.system
+  markup_code: "#F2248C"         # xcode.syntax.markup.code  — CORRECTED, see below
+  # Apple ships #AA0D91 in this slot in BOTH Default (Dark) and Default (Light):
+  # it is the *light* theme's keyword magenta, left unchanged in the dark theme.
+  # On #171717 it measures 2.71:1, the only slot in Default+ failing WCAG AA.
+  # Corrected to the dark keyword magenta, which is what the light theme's own
+  # value means — "inline code renders in the keyword colour".
 
-# ANSI 16-color terminal palette (0-7 and bright 8-15).
-# Default+ does not differentiate normal/bright — both halves are identical.
+# ── Status / marker colours ─────────────────────────────────────────────────
+# From the DVTScrollbarMarker* and console keys. Ports use these for diagnostics,
+# diff state and gutter signs rather than reusing a syntax hue for double duty.
+status:
+  error: "#F74A4A"         # DVTScrollbarMarkerErrorColor, ...DiffConflictColor
+  warning: "#EFB759"       # DVTScrollbarMarkerWarningColor
+  success: "#41B645"       # DVTConsoleDebuggerPromptTextColor
+  info: "#35B0D8"          # = syntax.declaration
+  runtime_issue: "#A482FF" # DVTScrollbarMarkerRuntimeIssueColor
+  analyzer: "#675FFF"      # DVTScrollbarMarkerAnalyzerColor
+  breakpoint: "#4A4AF7"    # DVTScrollbarMarkerBreakpointColor
+  neutral: "#8E8E8E"       # DVTScrollbarMarkerDiffColor
+
+# ── ANSI 16-colour terminal palette ─────────────────────────────────────────
+# Xcode has no ANSI concept, so this ramp is DESIGNED, not transcribed — but every
+# entry is a real Default+ colour, none invented. All 16 clear WCAG AA (4.5:1) on
+# #171717 except slots 0 and 8, which are background tones and never carry text.
+#
+# Normal and bright are genuinely distinct. They were identical in earlier
+# versions of this file, which wasted four of the theme's colours and made bold
+# text indistinguishable from plain. Ports should pair this with
+# `bold-is-bright = false` or the equivalent, so bold changes weight, not hue.
 ansi:
-  black: "#4D4D4D"
-  red: "#FC4651"
-  green: "#2EA85B"
-  yellow: "#FFE76D"
-  blue: "#35B0D8"
-  magenta: "#F2248C"
-  cyan: "#56D0B3"
-  white: "#FFFFFF"
-  bright_black: "#4D4D4D"
-  bright_red: "#FC4651"
-  bright_green: "#2EA85B"
-  bright_yellow: "#FFE76D"
-  bright_blue: "#35B0D8"
-  bright_magenta: "#F2248C"
-  bright_cyan: "#56D0B3"
-  bright_white: "#FFFFFF"
+  black: "#4C4C4C"          # base.invisibles
+  red: "#FC4651"            # syntax.string
+  green: "#2EA85B"          # syntax.comment  ← the signature
+  yellow: "#E09D65"         # syntax.attribute
+  blue: "#4FA5FF"           # syntax.url
+  magenta: "#F2248C"        # syntax.keyword
+  cyan: "#35B0D8"           # syntax.declaration
+  white: "#8E8E8E"          # base.muted_text
+  bright_black: "#515B70"   # base.selection_background
+  bright_red: "#F74A4A"     # status.error
+  bright_green: "#41B645"   # status.success
+  bright_yellow: "#FFE76D"  # syntax.number
+  bright_blue: "#66DAFF"    # syntax.declaration_type
+  bright_magenta: "#AB64FF" # syntax.system_member
+  bright_cyan: "#56D0B3"    # syntax.project_identifier
+  bright_white: "#FFFFFF"   # syntax.plain
 
-# Extended accents that only exist in the original Xcode theme (used for
-# finer-grained syntax highlighting there). Not currently mirrored in the
-# terminal/TUI ports, documented here for completeness and future ports.
-xcode_extended:
-  attribute: "#E09D65"          # xcode.syntax.attribute
-  macro_preprocessor: "#FD8F3F" # xcode.syntax.macro / preprocessor
-  url: "#4FA5FF"                # xcode.syntax.url
-  type_system: "#D0A8FF"        # xcode.syntax.identifier.*.system (types)
-  function_system: "#AB64FF"    # xcode.syntax.identifier.function.system
-  declaration_type: "#66DAFF"   # xcode.syntax.declaration.type
-  markup_code: "#AA0D91"        # xcode.syntax.markup.code (doc-comment inline code)
+# ── Derived shades ──────────────────────────────────────────────────────────
+# Xcode ships no diff backgrounds, so these follow one rule rather than taste:
+# each is its source colour composited over `background` at a fixed opacity.
+# Row = 20%, word-level highlight = 35%, muted accent = 50%.
+# `bin/build.py --check` recomputes these; do not hand-tune them.
+derived:
+  diff_added_bg: "#1C3425"           # syntax.comment 20% over background
+  diff_removed_bg: "#452023"         # syntax.string 20% over background
+  diff_moved_added_bg: "#1D363E"     # syntax.declaration 20% over background
+  diff_moved_removed_bg: "#352645"   # syntax.system_member 20% over background
+  diff_added_content_bg: "#1F4A2F"   # syntax.comment 35% over background
+  diff_removed_content_bg: "#67272B" # syntax.string 35% over background
+  context_content_bg: "#2F2F2F"      # base.muted_text 20% over background
+  current_line_solid: "#26262C"      # base.current_line 50% over background
+  # ^ Xcode stores current_line at 50% alpha. Editors that cannot blend a
+  #   highlight (nvim, tig) need it pre-flattened against the background.
+  accent_muted: "#266478"            # syntax.declaration 50% over background
+  muted_green: "#226039"             # syntax.comment 50% over background
+  muted_red: "#8A2E34"               # syntax.string 50% over background
+  muted_yellow: "#7C5A3E"            # syntax.attribute 50% over background
+  note_title_bg: "#1D363E"           # = diff_moved_added_bg
 
-# herdr's [theme.custom] schema requires a few tokens that don't have a
-# direct equivalent in the core/base palette above (a surface tone scale,
-# a secondary text tone, and a "peach" accent used for its own UI). Kept
-# here so the herdr port stays reproducible from this file.
+# ── Per-app extensions ──────────────────────────────────────────────────────
+# Tokens a specific app's theme schema requires that have no Xcode equivalent.
+# Kept here so every port stays reproducible from this one file.
+
 herdr_extended:
-  surface0: "#242424"     # slightly raised panel surface
+  surface0: "#242424"     # = base.subtle
   surface1: "#2E2E2E"     # further raised panel surface
-  surface_dim: "#141414"  # dimmed/recessed surface
+  surface_dim: "#0D0D0D"  # dimmed/recessed surface, below panel_background
   subtext0: "#B3B3B3"     # secondary text, lighter than base.muted_text
-  peach: "#FD9660"        # herdr-specific accent (no equivalent elsewhere)
+  peach: "#FD8F3F"        # = syntax.macro (herdr names this slot "peach")
 
-# Claude Code's custom theme is based on its built-in dark-ansi preset,
-# which reads the terminal's own 16 ANSI colors for almost everything
-# (diffs, status, text) — and since the Ghostty/zsh ports already put
-# Default+'s accents on those ANSI slots, most tokens need no override at
-# all. Only a handful of "signature" tokens (the primary accent, mode
-# borders, subagent colors, the ultrathink rainbow) are pinned to exact
-# Default+ hexes below, plus their "shimmer" tones — the lighter half of
-# the spinner/rainbow gradient animation for each accent. Kept here so the
-# claude-code port stays reproducible from this file.
+# Claude Code's theme sits on its built-in `dark-ansi` base, which reads the
+# terminal's own 16 ANSI colours for almost everything (diffs, status, text) —
+# and since the ghostty and zsh ports already put Default+ on those slots, only
+# the signature tokens need pinning: the primary accent, mode borders, subagent
+# colours and the ultrathink rainbow, plus each one's "shimmer" twin, the lighter
+# half of the spinner gradient.
+# Shimmer rule: the colour 40% of the way toward base.foreground.
 claude_code_extended:
-  shimmer_blue: "#66DAFF"        # = xcode_extended.declaration_type
-  shimmer_magenta: "#FF6BB0"
-  shimmer_yellow: "#FFF3AD"
-  shimmer_orange: "#FFC29B"
-  shimmer_red: "#FF8A91"
-  shimmer_green: "#5FD48A"
-  shimmer_indigo: "#8FC6FF"
-  shimmer_violet: "#C99BFF"
-
-# hunk's diff view requires several colors that go beyond the core palette:
-# muted/desaturated accent variants for gutter signs and file-status badges,
-# hue-tinted dark backgrounds for diff rows (shared with opencode's diffAddedBg /
-# diffRemovedBg), intra-line word-level highlight backgrounds, and a handful of
-# structural tints for moved hunks and note title bars. Kept here so the hunk
-# (and opencode diff) ports stay reproducible from this file.
-hunk_extended:
-  # Diff row backgrounds (also used by opencode as diffAddedBg / diffRemovedBg)
-  diff_added_bg: "#1E2A20"      # very dark green tint — added line row
-  diff_removed_bg: "#2A1E1F"    # very dark red tint — removed line row
-  diff_moved_added_bg: "#1A2530"    # very dark blue-green tint — moved+added row
-  diff_moved_removed_bg: "#2A1E2A"  # very dark purple-red tint — moved+removed row
-
-  # Word-level (intra-line) highlight backgrounds
-  diff_added_content_bg: "#2A3D2D"    # darker green for word-level add highlights
-  diff_removed_content_bg: "#3D2224"  # darker red for word-level remove highlights
-
-  # Muted accent tones (desaturated mid-tone between accent and background)
-  accent_muted: "#2A6A84"     # dimmed blue — inactive/secondary accent states
-  muted_green: "#4D8A5F"      # muted green — gutter signs, added file badge
-  muted_red: "#8A4048"        # muted red — gutter signs, deleted file badge
-  muted_yellow: "#B8A84E"     # muted yellow — modified file badge
-
-  # Structural tints
-  note_title_bg: "#1A2A35"    # very dark blue tint — note/annotation title bar
+  shimmer_blue: "#86D0E8"    # syntax.declaration 40% toward foreground
+  shimmer_magenta: "#F77CBA" # syntax.keyword 40% toward foreground
+  shimmer_yellow: "#FFF1A7"  # syntax.number 40% toward foreground
+  shimmer_orange: "#FEBC8C"  # syntax.macro 40% toward foreground
+  shimmer_red: "#FD9097"     # syntax.string 40% toward foreground
+  shimmer_green: "#82CB9D"   # syntax.comment 40% toward foreground
+  shimmer_indigo: "#95C9FF"  # syntax.url 40% toward foreground
+  shimmer_violet: "#CDA2FF"  # syntax.system_member 40% toward foreground
