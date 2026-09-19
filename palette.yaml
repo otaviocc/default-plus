@@ -127,6 +127,14 @@ derived:
   muted_yellow: "#7C5A3E"            # syntax.attribute 50% over background
   note_title_bg: "#1D363E"           # = diff_moved_added_bg
 
+  # Neutral ramp. Default+ has six neutrals; a web UI's greyscale wants about
+  # twelve, so these fill the gaps between them by the same rule — `foreground`
+  # composited over `background`. Existing slots already sit on this ramp:
+  # subtle is 5.6%, muted 22.8% and muted_text 51.3%.
+  neutral_raised: "#2E2E2E"          # foreground 10% over background
+  neutral_overlay: "#5D5D5D"         # foreground 30% over background
+  neutral_subtext: "#B9B9B9"         # foreground 70% over background
+
 # ── Per-app extensions ──────────────────────────────────────────────────────
 # Tokens a specific app's theme schema requires that have no Xcode equivalent.
 # Kept here so every port stays reproducible from this one file.

@@ -83,6 +83,7 @@ clears WCAG AA (4.5:1) against the background. `bin/build.py --check` enforces i
 | vigia | Copy [`vigia/theme`](./vigia/theme) to `~/.config/vigia/theme`, or point `VIGIA_THEME` at it. |
 | Claude Code | Copy [`claude-code/default-plus.json`](./claude-code/default-plus.json) to `~/.claude/themes/default-plus.json`, then pick **Default+** in `/theme`. Requires Claude Code v2.1.118+. |
 | Slack | See [`slack/theme.txt`](./slack/theme.txt) for the paste values. |
+| Kagi | Paste [`kagi/default-plus.css`](./kagi/default-plus.css) into Settings → Appearance → Custom CSS, with the theme set to a dark one. |
 | iTerm2 | Double-click [`iterm/Default+.itermcolors`](./iterm/Default+.itermcolors) (or drag it into Preferences → Profiles → Colors → Color Presets → Import), then select **Default+**. |
 | Apple Terminal | Double-click [`terminal/Default+.terminal`](./terminal/Default+.terminal) to add it, then select **Default+** in Terminal → Settings → Profiles. |
 
@@ -125,6 +126,7 @@ default-plus/
 ├── opencode/        opencode TUI theme
 ├── hunk/            hunk theme snippet
 ├── vigia/           vigia theme
+├── kagi/            Kagi custom CSS
 └── claude-code/     Claude Code custom theme
 ```
 

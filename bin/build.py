@@ -168,6 +168,9 @@ DERIVED_RULES = {
     "muted_green": ("syntax.comment", 0.50),
     "muted_red": ("syntax.string", 0.50),
     "muted_yellow": ("syntax.attribute", 0.50),
+    "neutral_raised": ("base.foreground", 0.10),
+    "neutral_overlay": ("base.foreground", 0.30),
+    "neutral_subtext": ("base.foreground", 0.70),
 }
 
 SHIMMER_RULES = {

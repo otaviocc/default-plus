@@ -1,0 +1,264 @@
+/* Default+ for Kagi
+ *
+ * https://github.com/otaviocc/default-plus — generated from that repo's
+ * palette.yaml, whose own source is an Xcode Font & Color Theme.
+ *
+ * Paste into Kagi Settings → Appearance → Custom CSS, with the theme set to a
+ * dark one so Kagi's own dark rules are the ones being overridden.
+ *
+ * The structure — which Kagi variables to move, and the handful of non-colour
+ * rules at the bottom — follows the Catppuccin port, which worked it out
+ * first. The colours and their role assignments are Default+'s own.
+ *
+ * Kagi's greyscale is `--graphite-N`, and it runs the opposite way to a
+ * lightness scale: a low N is text and a high N is background. Default+ has
+ * six neutrals where that scale wants about twelve, so the gaps are filled by
+ * the palette's stated rule — `foreground` composited over `background` at a
+ * fixed opacity — rather than by eye. The whole scale is redefined below,
+ * including `--graphite-150`, so no step falls through to Kagi's own value.
+ */
+
+:root {
+    /* Default+ palette */
+    --dp-background: #171717;
+    --dp-panel: #111111;
+    --dp-subtle: #242424;
+    --dp-raised: #2E2E2E;    /* foreground 10% over background */
+    --dp-muted: #4C4C4C;
+    --dp-overlay: #5D5D5D;   /* foreground 30% over background */
+    --dp-muted-text: #8E8E8E;
+    --dp-subtext: #B9B9B9;   /* foreground 70% over background */
+    --dp-foreground: #FFFFFF;
+    --dp-selection: #515B70;
+
+    --dp-comment: #2EA85B;
+    --dp-string: #FC4651;
+    --dp-keyword: #F2248C;
+    --dp-number: #FFE76D;
+    --dp-macro: #FD8F3F;
+    --dp-url: #4FA5FF;
+    --dp-declaration: #35B0D8;
+    --dp-project: #56D0B3;
+    --dp-system: #AB64FF;
+
+    --dp-error: #F74A4A;
+    --dp-warning: #EFB759;
+    --dp-success: #41B645;
+
+    /* Kagi's greyscale, low N light to high N dark */
+    --graphite: var(--dp-panel);
+    --graphite-25: var(--dp-foreground);
+    --graphite-50: var(--dp-foreground);
+    --graphite-70: var(--dp-foreground);
+    --graphite-100: var(--dp-subtext);
+    --graphite-150: var(--dp-subtext);
+    --graphite-200: var(--dp-muted-text);
+    --graphite-300: var(--dp-muted-text);
+    --graphite-400: var(--dp-overlay);
+    --graphite-500: var(--dp-muted);
+    --graphite-600: var(--dp-muted);
+    --graphite-700: var(--dp-raised);
+    --graphite-800: var(--dp-raised);
+    --graphite-850: var(--dp-subtle);
+    --graphite-900: var(--dp-subtle);
+    --graphite-950: var(--dp-background);
+    --graphite-1000: var(--dp-panel);
+
+    /* Shell */
+    --app-bg: var(--graphite-950);
+    --app-frame-bg: var(--app-bg);
+    --bottom-bar-bg: var(--graphite);
+    --landing-bg: var(--app-bg);
+    --app-text: var(--dp-foreground);
+    --kagi-accent: var(--graphite-850);
+    --kagi-graphite-s: var(--graphite);
+    --secondary: var(--graphite);
+    --primary: var(--graphite-100);
+    --primary-25: var(--graphite-900);
+    --primary-50: var(--graphite-900);
+    --primary-70: var(--graphite-800);
+    --primary-100: var(--graphite-900);
+    --primary-200: var(--graphite-800);
+    --primary-300: var(--graphite-600);
+    --primary-400: var(--graphite-400);
+    --primary-500: var(--graphite-500);
+    --primary-600: var(--graphite-300);
+    --primary-700: var(--graphite-300);
+    --primary-800: var(--graphite-200);
+    --primary-850: var(--graphite-200);
+    --primary-900: var(--graphite-200);
+    --primary-950: var(--graphite-150);
+    --primary-1000: var(--graphite-100);
+
+    /* Inputs and chrome */
+    --color-search-input: var(--graphite-800);
+    --color-search-input-border: var(--graphite-600);
+    --input-bg: var(--graphite-800);
+    --btn-group-bg: var(--input-bg);
+    --quick-search-icon: var(--graphite);
+    --k-tooltip-bg: var(--primary);
+    --k-tooltip-text: var(--secondary);
+    --dd-hover-bg: var(--kagi-accent);
+    --dd-list-input-bg: var(--graphite-800);
+    --auto-sugg-bg_hover: var(--dp-raised);
+    --not-found-bubble-bg: var(--secondary);
+    --app-sidebar-link: var(--primary-700);
+    --app-sidebar-nav-item-icon_hover: var(--primary);
+    --ranked-box-icon-normal-bg: var(--ranked-box-wrapper-bg);
+    --site_info_bg: var(--graphite-900);
+    --site_info_bottom_bg: var(--app-bg);
+    --m_sri_gap_color: var(--color-search-input);
+    --billing-svg-bg-premium_1: var(--inline-widget-bg);
+    --resultsummary-highlight_text: var(--secondary);
+
+    /* Links. A result title is the colour Xcode gives a declaration, which is
+     * the accent every other Default+ port uses; a followed one moves to the
+     * system-member purple, the convention for a visited link. */
+    --search-result-title: var(--dp-declaration);
+    --result-item-title_hover: var(--dp-declaration);
+    --result-item-title-border_hover: var(--dp-declaration);
+    --result-item-title_active_hover: var(--dp-system);
+    --result-item-title-border_active_hover: var(--dp-system);
+    --result-item-title-border: #00000000;
+    --primary-hover: var(--dp-system);
+    --primary-hover-hover: var(--dp-system);
+    --primary-visited: var(--dp-system);
+    --search-result-content-text: var(--primary-600);
+    --search-result-url-link: var(--primary-900);
+    --result-rank-icon-stroke_promoted: var(--app-bg);
+
+    /* Results furniture */
+    --search-result-date-bg: var(--graphite-800);
+    --search-result-date-new-bg: var(--graphite-600);
+    --search-result-date-new: var(--graphite-200);
+    --inline-header-title: var(--graphite-300);
+    --inline-widget-bg: var(--graphite-900);
+    --inline-widget-hover-bg: var(--graphite-800);
+    --inline-header-border: var(--graphite-600);
+    --inline-domain-tag-bg: var(--graphite-800);
+    --related-item-bg: var(--graphite-850);
+    --related-item-hover-bg: var(--graphite-700);
+    --video-item-bg: var(--graphite-900);
+
+    /* The tab underlines, one hue each so the row reads at a glance */
+    --nav_n_se_line: var(--dp-number);
+    --nav_n_im_line: var(--dp-url);
+    --nav_n_vi_line: var(--dp-string);
+    --nav_n_ne_line: var(--dp-system);
+    --nav_n_ma_line: var(--dp-project);
+
+    /* Domain badges. These are signals, so they come from the palette's status
+     * roles rather than the syntax hues that happen to be red and green — in
+     * Default+ green is the comment colour and red is the string colour. */
+    --domain-rank-icon-color-trackers: var(--dp-macro);
+    --domain-rank-icon-color-trackers-hover: var(--dp-macro);
+    --domain-rank-icon-color-scam: var(--dp-error);
+}
+
+:focus-visible {
+    outline: 2px solid var(--dp-declaration);
+}
+
+/* Search */
+.search-form .search-input-container {
+    border-radius: 16px;
+    padding-inline-end: 0.5rem;
+    background: var(--graphite-800);
+}
+
+._0_auto-sug .search-form .search-input-container {
+    border-radius: 16px 16px 0px 0px;
+}
+
+.auto_suggestions {
+    border-radius: 0px 0px 16px 16px;
+}
+
+.search_area {
+    outline: none;
+}
+
+/* Toggle switch */
+.k_ui_toggle_switch.--enabled .k_ui_toggle_switch_bar {
+    background: var(--dp-declaration);
+    box-shadow: 0 0 0 1px var(--dp-declaration);
+}
+
+.k_ui_toggle_switch.--enabled .k_ui_toggle_switch_bar:after {
+    border: 1px solid var(--dp-declaration);
+}
+
+/* Results */
+@media (max-width: 640px) {
+    .inline-content+.search-result, .inline-content+.sri-group {
+        border-top: 10px solid var(--graphite);
+    }
+
+    .search-result, .sri-group {
+        border-bottom: 10px solid var(--graphite);
+    }
+}
+
+/* Links */
+.__srgi-title a:hover,
+.__sri-title .__sri_title_link:hover {
+    border-bottom: 1px solid var(--result-item-title-border_hover);
+    color: var(--result-item-title_hover);
+}
+
+.__srgi-title a:visited:hover,
+.__sri-title .__sri_title_link:visited:hover {
+    border-bottom: 1px solid var(--result-item-title-border_active_hover);
+    color: var(--result-item-title_active_hover);
+}
+
+/* Time */
+.__sri-time, .__sri-time.--new {
+    background-color: unset;
+    color: var(--app-text);
+    padding: 0;
+}
+
+/* Widgets */
+.widgetContent .widgetItems {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Wikipedia results */
+.wikipediaResult a:hover {
+    border-bottom: 1px solid var(--dp-declaration);
+    color: var(--dp-declaration);
+}
+
+.wikipediaResult a:visited:hover {
+    border-bottom: 1px solid var(--dp-system);
+    color: var(--dp-system);
+}
+
+.wikipediaResult .wiki-title a:hover {
+    border-bottom: 1px solid var(--dp-declaration);
+    color: var(--dp-declaration);
+}
+
+.wikipediaResult .wiki-image a {
+    border-bottom: unset;
+}
+
+/* Buttons */
+.btn.--primary {
+    border-radius: 16px;
+}
+
+/* Trackers */
+.d-info-box-title-header {
+    background: var(--dp-success);
+}
+
+.d-info-box-title-header.--trackers {
+    background: var(--dp-macro);
+}
+
+.rakned-box-close {
+    color: var(--dp-panel);
+}
