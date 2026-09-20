@@ -10,8 +10,8 @@
 # if either has drifted. Change a colour in Xcode first, re-run the script, then
 # propagate to the ports.
 #
-# Xcode 27's `.xcworkspacecolortheme` recipe format is NOT a source here. Xcode 26
-# renders the classic plist, and that is what this palette targets.
+# Xcode 26 renders the classic plist and Xcode 27 the `.xcworkspacecolortheme`
+# recipe; the plist remains the source, and the recipe is generated from it.
 
 meta:
   name: Default+
@@ -138,6 +138,15 @@ derived:
 # ── Per-app extensions ──────────────────────────────────────────────────────
 # Tokens a specific app's theme schema requires that have no Xcode equivalent.
 # Kept here so every port stays reproducible from this one file.
+
+# Xcode 27 renders the editor background as a gradient rather than a flat fill.
+# Default+ has exactly one background, so the two endpoints are chosen to
+# straddle it: their arithmetic mean is #171717 to the byte, which keeps the
+# canonical background true at the centre of the editor and lets the top and
+# bottom edges separate the source from the chrome around it.
+xcode27_extended:
+  gradient_top: "#1D1D1D"     # base.background lightened 6 steps
+  gradient_bottom: "#111111"  # = base.panel_background; (0x1D + 0x11) / 2 = 0x17
 
 herdr_extended:
   surface0: "#242424"     # = base.subtle

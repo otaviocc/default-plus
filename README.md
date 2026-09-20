@@ -5,8 +5,8 @@ Theme, ported to the terminal, editors and various command-line tools.
 
 The canonical palette lives in [`palette.yaml`](./palette.yaml), and its own
 source of truth is [`xcode/Default+.xccolortheme`](./xcode/Default+.xccolortheme)
-— the Xcode 26 theme every other port is derived from. To change a colour,
-change it in Xcode first, then run `bin/build.py`.
+— the Xcode 26 theme every other port is derived from, including the Xcode 27
+one. To change a colour, change it in Xcode 26 first, then run `bin/build.py`.
 
 ## Syntax roles
 
@@ -69,7 +69,8 @@ clears WCAG AA (4.5:1) against the background. `bin/build.py --check` enforces i
 
 | App | Install |
 |---|---|
-| Xcode | Copy [`xcode/Default+.xccolortheme`](./xcode/Default+.xccolortheme) to `~/Library/Developer/Xcode/UserData/FontAndColorThemes/`, then select **Default+** in Xcode → Settings → Themes. |
+| Xcode 26 | Copy [`xcode/Default+.xccolortheme`](./xcode/Default+.xccolortheme) to `~/Library/Developer/Xcode/UserData/FontAndColorThemes/`, then select **Default+** in Xcode → Settings → Themes. |
+| Xcode 27 | Copy [`xcode/Default+.xcworkspacecolortheme`](./xcode/Default+.xcworkspacecolortheme) to the same folder. Xcode 27 reads both formats; the recipe is the one that carries the gradient. |
 | Ghostty | Copy [`ghostty/Default+`](./ghostty/Default+) to `~/.config/ghostty/themes/Default+`, then set `theme = "Default+"` in `~/.config/ghostty/config`. |
 | Neovim | See [default-plus-nvim](https://github.com/otaviocc/default-plus-nvim) — install via your plugin manager. |
 | Obsidian | See [default-plus-obsidian](https://github.com/otaviocc/default-plus-obsidian) — available in the Obsidian community themes list. |
@@ -86,6 +87,23 @@ clears WCAG AA (4.5:1) against the background. `bin/build.py --check` enforces i
 | Kagi | Paste [`kagi/default-plus.css`](./kagi/default-plus.css) into Settings → Appearance → Custom CSS, with the theme set to a dark one. |
 | iTerm2 | Double-click [`iterm/Default+.itermcolors`](./iterm/Default+.itermcolors) (or drag it into Preferences → Profiles → Colors → Color Presets → Import), then select **Default+**. |
 | Apple Terminal | Double-click [`terminal/Default+.terminal`](./terminal/Default+.terminal) to add it, then select **Default+** in Terminal → Settings → Profiles. |
+
+## Xcode 27
+
+Xcode 27 keeps reading the classic `.xccolortheme` plist, but its own themes are
+now *recipes*: `.xcworkspacecolortheme`, a JSON document holding two palette
+anchors, a set of per-role overrides and a background that may be a gradient.
+Colours are stored in OKLCH and resolved at display time rather than written out
+as sRGB triples.
+
+Default+ is hand-tuned rather than generated from two hues, so the recipe pins
+every syntax role in `colorOverrides` and lets the anchors steer only the chrome
+Xcode derives for itself. The one genuinely new thing it adopts is the gradient
+background: `#1D1D1D` at the top to `#111111` at the bottom, endpoints chosen so
+their mean is exactly the canonical `#171717`.
+
+Two roles the 26 theme separates do not survive: Xcode 27 has no role of its own
+for `attribute`, and character and regex literals share `string`.
 
 ## Making changes
 
@@ -114,7 +132,8 @@ bin/build.py --validate --also ../default-plus-nvim ../default-plus-obsidian ../
 default-plus/
 ├── palette.yaml     Canonical palette, derived from the Xcode theme
 ├── bin/build.py     Generator, checker and validator
-├── xcode/           Original Xcode Font & Color Theme — the source of truth
+├── xcode/           Xcode themes: the 26 plist (source of truth) and
+│                  the generated 27 recipe                    (partly generated)
 ├── ghostty/         Ghostty terminal theme                    (generated)
 ├── iterm/           iTerm2 color preset                       (generated)
 ├── terminal/        Apple Terminal profile                    (generated)
